@@ -69,10 +69,10 @@ select 1 patient in server.R
 TEST investigating splines df.R
 test server.R
 
-2018-01-01 MultiMixedModel 2or3 underlying value secondary outcome/
-2018-04-16 MultiMixedModel 2or3 binary secondary outcome/
-2018-04-17 MultiMixedModel 2or3 propabilities secondaty outcome/
-2018-04-18 LatentMultiMixedModel 2or3 binary secondary outcome/
+2018-01-01 MultiMixedModel - underlying value as secondary outcome/
+2018-04-16 MultiMixedModel - binary as secondary outcome/
+2018-04-17 MultiMixedModel - propabilities as secondaty outcome/
+2018-04-18 LatentMultiMixedModel - binary as secondary outcome/
 
 analysis2.R
 analysis3.R
