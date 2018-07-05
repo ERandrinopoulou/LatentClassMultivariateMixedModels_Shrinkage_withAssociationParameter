@@ -1,0 +1,63 @@
+model
+{
+    for (i in 1:N) {
+        for (j in offset[i]:(offset[i + 1] - 1)) {
+            muy[j] <- inprod((equals(v[i], 1) * betas11[1:ncX]) + (equals(v[i], 2) * betas12[1:ncX]), X[j, 1:ncX])  +
+                      inprod((equals(v[i], 1) * b1[i, 1:ncZ]) + (equals(v[i], 2) * b2[i, 1:ncZ]), Z[j, 1:ncZ]) +         
+                      (equals(v[i], 1) * alphas11 * (exp(muy2[j])/(1 + exp(muy2[j])))) + (equals(v[i], 2) * alphas12 * (exp(muy2[j])/(1 + exp(muy2[j])))) +
+                      (equals(v[i], 1) * alphas21 * (exp(muy3[j])/(1 + exp(muy3[j])))) + (equals(v[i], 2) * alphas22 * (exp(muy3[j])/(1 + exp(muy3[j]))))
+            y[j] ~ dnorm(muy[j], tau)
+        }
+        for (j in offset[i]:(offset[i + 1] - 1)) {
+            muy2[j] <- inprod((equals(v[i], 1) * betas21[1:ncX2]) + (equals(v[i], 2) * betas22[1:ncX2]), X2[j, 1:ncX2]) +
+                      inprod((equals(v[i], 1) * b1[i, (ncZ + 1):(ncZ + ncZ2)]) + (equals(v[i], 2) * b2[i, (ncZ + 1):(ncZ + ncZ2)]), Z2[j, 1:ncZ2]) 
+            Pr[j] <- max(1.00000E-05, min(0.99999, (exp(muy2[j])/(1 + exp(muy2[j])))))
+            y2[j] ~ dbin(Pr[j], 1)
+        }
+        for (j in offset[i]:(offset[i + 1] - 1)) {
+             muy3[j] <- inprod((equals(v[i], 1) * betas31[1:ncX3]) + (equals(v[i], 2) * betas32[1:ncX3]), X3[j, 1:ncX3]) +
+                      inprod((equals(v[i], 1) * b1[i, (ncZ + ncZ2 + 1):(ncZ + ncZ2 + ncZ3)]) + (equals(v[i], 2) * b2[i, (ncZ + ncZ2 + 1):(ncZ + ncZ2 + ncZ3)]), Z3[j, 1:ncZ3]) 
+            Pr3[j] <- max(1.00000E-05, min(0.99999, (exp(muy3[j])/(1 + exp(muy3[j])))))
+            y3[j] ~ dbin(Pr3[j], 1)        }
+
+        b1[i, 1:nb] ~ dmnorm(mu01[], inv.D1[, ])
+        b2[i, 1:nb] ~ dmnorm(mu02[], inv.D2[, ])
+        v[i] ~ dcat(pr[i, ]) 
+        pr[i, 1:2] ~ ddirch(prior.cl[]) 
+    }
+   
+
+    alphas11 ~ dnorm(0,inv.var.b1)  
+    alphas12 ~ dnorm(0,inv.var.b2)  
+    alphas21 ~ dnorm(0,inv.var.b3)  
+    alphas22 ~ dnorm(0,inv.var.b4)  
+
+
+    betas11[1:(ncX)] ~ dmnorm(priorMean.betas11[], priorTau.betas11[, ])
+    betas12[1:(ncX)] ~ dmnorm(priorMean.betas12[], priorTau.betas12[, ])
+    betas21[1:(ncX2)] ~ dmnorm(priorMean.betas21[], priorTau.betas21[, ])
+    betas22[1:(ncX2)] ~ dmnorm(priorMean.betas22[], priorTau.betas22[, ])
+    betas31[1:(ncX3)] ~ dmnorm(priorMean.betas31[], priorTau.betas31[, ])
+    betas32[1:(ncX3)] ~ dmnorm(priorMean.betas32[], priorTau.betas32[, ])
+ 
+    inv.var.b1 ~ dgamma(ni1/2, 1/((ni1/2) * sig1^2))
+    inv.var.b2 ~ dgamma(ni2/2, 1/((ni2/2) * sig2^2))
+    inv.var.b3 ~ dgamma(ni3/2, 1/((ni3/2) * sig3^2))
+    inv.var.b4 ~ dgamma(ni4/2, 1/((ni4/2) * sig4^2))
+    niInv1 ~ dunif(0.00000E+00, 1)
+    ni1 <- 1/niInv1
+    sig1 ~ dunif(0.00000E+00, 100)
+    niInv2 ~ dunif(0.00000E+00, 1)
+    ni2 <- 1/niInv2
+    sig2 ~ dunif(0.00000E+00, 100)
+    niInv3 ~ dunif(0.00000E+00, 1)
+    ni3 <- 1/niInv3
+    sig3 ~ dunif(0.00000E+00, 100)
+    niInv4 ~ dunif(0.00000E+00, 1)
+    ni4 <- 1/niInv4
+    sig4 ~ dunif(0.00000E+00, 100)
+
+  inv.D1[1:nb, 1:nb] ~ dwish(priorR.D1[, ], priorK.D1)
+    inv.D2[1:nb, 1:nb] ~ dwish(priorR.D2[, ], priorK.D2)
+    tau ~ dgamma(priorA.tau, priorB.tau)
+}

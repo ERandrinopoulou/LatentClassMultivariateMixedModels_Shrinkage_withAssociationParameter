@@ -1,7 +1,6 @@
-# Windows thumbnail cache files
+# Windows image file caches
 Thumbs.db
 ehthumbs.db
-ehthumbs_vista.db
 
 # Folder config file
 Desktop.ini
@@ -21,3 +20,72 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+
+###############################
+###############################
+###############################
+BMA/
+CV/
+JM*/
+MM*/
+OLD/
+PredFigures/
+Shiny app/
+
+*.Rhistory
+.gitgnore
+*.csv
+CV Dimitris.R
+Data load.R
+Descriptives.R
+groupsPatients dep on variabitity.R
+select 1 patient in server.R
+TEST investigating splines df.R
+test server.R
+
+2018-01-01 MultiMixedModel 2or3 underlying value secondary outcome/
+2018-04-16 MultiMixedModel 2or3 binary secondary outcome/
+2018-04-17 MultiMixedModel 2or3 propabilities secondaty outcome/
+2018-04-18 LatentMultiMixedModel 2or3 binary secondary outcome/
+
+analysis2.R
+analysis3.R
+multiMixed2
+multiMixed3
+*.RData
+run2.R
+run3.R
+simulate2a.R
+simulate2b.R
+simulate3a.R
+simulate3b.R
+TEST_parClasses.R
+
+
+
