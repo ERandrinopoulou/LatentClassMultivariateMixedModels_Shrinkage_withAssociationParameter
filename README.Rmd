@@ -1,7 +1,7 @@
 
 # A multivariate mixed effects latent class model
 
-This repository includes the code for a multivariate mixed effects latent class model where the londitudinal outcomes are not only associated with the random effects but also with an association parameter. 
+This repository includes the code for a multivariate mixed effects latent class model where the londitudinal outcomes are not only associated with the random effects but also with an association parameter. Furthremore, shrinkage priors are assumed for the longitudinal outcomes.
 
 Specifically:
 * "**simulate3a_shrink**": simulates 3 outcomes.
