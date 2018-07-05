@@ -1,1 +1,16 @@
 
+# A multivariate mixed effects latent class model
+
+This repository includes the code for a multivariate mixed effects latent class model where the londitudinal outcomes are not only associated with the random effects but also with an association parameter. 
+
+Specifically:
+* "**simulate3a_shrink**": simulates 3 outcomes.
+* "**simulate3b_shrink**": simulates another 3 outcomes.
+* "**multiMixed3shrink**": includes the JAGS model. 
+* "**analysis3shrink**": prepares the data for JAGS.
+* "**run3shrink**": includes the main code. Specifically, it loads the packages, simulates the data and runs the model.
+
+How does it work:
+* Download all files and place them in one folder.
+* Set as working directory in R this folder.
+* Run the code in "run3shrink" for fitting the model.
