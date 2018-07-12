@@ -3,7 +3,7 @@
 
 This repository includes the code for a multivariate mixed effects latent class model where the londitudinal outcomes are not only associated with the random effects but also with an association parameter. Furthremore, shrinkage priors are assumed for the longitudinal outcomes.
 
-Specifically:
+Specifically, the simulation folder we have:
 * "**simulate3a_shrink**": simulates 3 outcomes.
 * "**simulate3b_shrink**": simulates another 3 outcomes.
 * "**multiMixed3shrink**": includes the JAGS model. 
