@@ -1,4 +1,3 @@
-setwd("G:/2017-01 ROI/2017-01-03 Andrinopoulou - Uveitis project/Simulation/2018-05-02 LatentMultiMixedModel - propabilities as secondary outcome")
 
 library(JMbayes)
 library(lme4)
